@@ -6,10 +6,13 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
 pushd "${SCRIPT_DIR}"
 
-# install deps
+# install apt deps
 sudo apt update
 APT_DEPS=$(cat apt.txt | tr "\n" " ")
 sudo apt install -y ${APT_DEPS}
+
+# install pip deps
+pip3 install -r pip.txt
 
 # git alias
 git config --global alias.br branch
