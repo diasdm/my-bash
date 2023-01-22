@@ -23,3 +23,18 @@ git config --global alias.tree "log --graph --abbrev-commit --decorate --format=
 
 # tmux config
 ln -s .tmux.conf ~/.tmux.conf
+
+# install alias
+#TODO check if alias is already installed
+echo "
+# source my environment
+source ${SCRIPT_DIR}/alias.sh
+" >> ~/.bashrc
+
+echo "\
+    Please source your ~/.bashrc:
+$ source ~/.bashrc"
+
+# SCRIPT_DIR
+popd > /dev/null
+
