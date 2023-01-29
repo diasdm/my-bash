@@ -32,7 +32,6 @@ if [ -f "${HOME}/.tmux.conf" ]; then
     ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
 fi
 
-
 # repositories
 if ! [ -d "${HOME}/projects/diff-so-fancy" ]; then
     mkdir -p "${HOME}/projects"
