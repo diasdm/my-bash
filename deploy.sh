@@ -4,11 +4,12 @@ set -e
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-pushd "${SCRIPT_DIR}"
+pushd "${SCRIPT_DIR}" > /dev/null
 
 # install apt deps
+echo "Installing APT dependencies"
 sudo apt update
-APT_DEPS=$(cat apt.txt | tr "\n" " ")
+APT_DEPS=$(cat "${SCRIPT_DIR}/apt.txt" | tr "\n" " ")
 sudo apt install -y ${APT_DEPS}
 
 # install python deps
@@ -27,7 +28,10 @@ git config --global core.pager "${HOME}/projects/diff-so-fancy/diff-so-fancy | l
 git config --global interactive.diffFilter "${HOME}/projects/diff-so-fancy/diff-so-fancy --patch"
 
 # tmux config
-ln -s .tmux.conf ~/.tmux.conf
+if [ -f "${HOME}/.tmux.conf" ]; then
+    ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
+fi
+
 
 # repositories
 if ! [ -d "${HOME}/projects/diff-so-fancy" ]; then
@@ -36,20 +40,21 @@ if ! [ -d "${HOME}/projects/diff-so-fancy" ]; then
 fi
 
 # bash-git-prompt source
-if [ -d "${HOME}/bash-git-prompt" ]; then
+if ! [ -d "${HOME}/projects/bash-git-prompt" ]; then
     git clone git@github.com:magicmonty/bash-git-prompt.git "${HOME}/projects/bash-git-prompt" --depth=1
 fi
 
 # install alias
-#TODO check if alias is already installed
-echo "
+if ! grep "${SCRIPT_DIR}/bashrc_extensions.sh" ~/.bashrc > /dev/null; then
+    echo "
 # source my environment
 source "${SCRIPT_DIR}/bashrc_extensions.sh"
-" >> ~/.bashrc
+    " >> ~/.bashrc
 
-echo "\
-    Please source your ~/.bashrc:
-$ source ~/.bashrc"
+    echo "
+Please source your ~/.bashrc:
+    $ source ~/.bashrc"
+fi
 
 # SCRIPT_DIR
 popd > /dev/null
