@@ -21,7 +21,7 @@ git config --global alias.ci commit
 git config --global alias.co checkout
 git config --global alias.st status
 git config --global alias.tree "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all"
-git config --global alias.qa "commit --amend --no-edit"  # quiet amend
+git config --global alias.no-edit-ci "commit --amend --no-edit"  # quiet amend
 
 # git configs
 git config --global core.editor "vim"
@@ -30,8 +30,16 @@ git config --global interactive.diffFilter "${SCRIPT_DIR}/submodules/diff-so-fan
 
 # tmux config
 if [ -f "${HOME}/.tmux.conf" ]; then
-    ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
+    ln -f -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
 fi
+
+# submodules
+git submodules update --init
+
+# motivate
+pushd "${SCRIPT_DIR}/submodules/motivate/motivate" > /dev/null
+sudo ./install.sh
+popd > /dev/null
 
 # install alias
 if ! grep "${SCRIPT_DIR}/bashrc_extensions.sh" ~/.bashrc > /dev/null; then
