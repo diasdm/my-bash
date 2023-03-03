@@ -25,23 +25,12 @@ git config --global alias.qa "commit --amend --no-edit"  # quiet amend
 
 # git configs
 git config --global core.editor "vim"
-git config --global core.pager "${HOME}/projects/diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX"
-git config --global interactive.diffFilter "${HOME}/projects/diff-so-fancy/diff-so-fancy --patch"
+git config --global core.pager "${SCRIPT_DIR}/submodules/diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX"
+git config --global interactive.diffFilter "${SCRIPT_DIR}/submodules/diff-so-fancy/diff-so-fancy --patch"
 
 # tmux config
 if [ -f "${HOME}/.tmux.conf" ]; then
     ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
-fi
-
-# repositories
-if ! [ -d "${HOME}/projects/diff-so-fancy" ]; then
-    mkdir -p "${HOME}/projects"
-    git clone git@github.com:so-fancy/diff-so-fancy.git "${HOME}/projects/diff-so-fancy" --depth=1
-fi
-
-# bash-git-prompt source
-if ! [ -d "${HOME}/projects/bash-git-prompt" ]; then
-    git clone git@github.com:magicmonty/bash-git-prompt.git "${HOME}/projects/bash-git-prompt" --depth=1
 fi
 
 # install alias
