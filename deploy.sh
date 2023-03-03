@@ -34,17 +34,17 @@ if [ -f "${HOME}/.tmux.conf" ]; then
 fi
 
 # submodules
-git submodules update --init
+git submodule update --init
 
 # motivate
 pushd "${SCRIPT_DIR}/submodules/motivate/motivate" > /dev/null
-sudo ./install.sh
+#sudo ./install.sh
 popd > /dev/null
 
 # install alias
 if ! grep "${SCRIPT_DIR}/bashrc_extensions.sh" ~/.bashrc > /dev/null; then
     echo "
-# source my environment
+# source personal environment
 source "${SCRIPT_DIR}/bashrc_extensions.sh"
     " >> ~/.bashrc
 
