@@ -28,13 +28,20 @@ git config --global core.editor "vim"
 git config --global core.pager "${SCRIPT_DIR}/submodules/diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX"
 git config --global interactive.diffFilter "${SCRIPT_DIR}/submodules/diff-so-fancy/diff-so-fancy --patch"
 
-# tmux config
-if ! [ -f "${HOME}/.tmux.conf" ]; then
-    ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
-fi
-
 # submodules
 git submodule update --init
+
+# tmux tpm
+if ! [ -d "${HOME}/.tmux/plugins/tpm" ]; then
+    echo "Creating tmux tpm symlink"
+    ln -s "${SCRIPT_DIR}/submodules/tpm" "${HOME}/.tmux/plugins/tpm"
+fi
+
+# tmux config
+if ! [ -f "${HOME}/.tmux.conf" ]; then
+    echo "Creating tmux config symlink"
+    ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
+fi
 
 # motivate
 pushd "${SCRIPT_DIR}/submodules/motivate/motivate" > /dev/null

@@ -7,3 +7,6 @@
 [submodule "submodules/motivate"]
 	path = submodules/motivate
 	url = git@github.com:mubaris/motivate.git
+[submodule "submodules/tpm"]
+	path = submodules/tpm
+	url = https://github.com/tmux-plugins/tpm
