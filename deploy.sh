@@ -38,7 +38,7 @@ git submodule update --init
 
 # motivate
 pushd "${SCRIPT_DIR}/submodules/motivate/motivate" > /dev/null
-#sudo ./install.sh
+sudo ./install.sh
 popd > /dev/null
 
 # install alias
