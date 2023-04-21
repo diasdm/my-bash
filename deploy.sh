@@ -29,8 +29,8 @@ git config --global core.pager "${SCRIPT_DIR}/submodules/diff-so-fancy/diff-so-f
 git config --global interactive.diffFilter "${SCRIPT_DIR}/submodules/diff-so-fancy/diff-so-fancy --patch"
 
 # tmux config
-if [ -f "${HOME}/.tmux.conf" ]; then
-    ln -f -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
+if ! [ -f "${HOME}/.tmux.conf" ]; then
+    ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
 fi
 
 # submodules
