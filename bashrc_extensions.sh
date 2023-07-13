@@ -12,6 +12,7 @@ alias gti='git'
 alias file-num='ls | wc -l'
 alias venv-create='python3 -m venv .venv'
 alias venv-act='. .venv/bin/activate'
+alias venv-setup='pip install -r '
 
 # motivate
 motivate
