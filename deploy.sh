@@ -34,6 +34,7 @@ git submodule update --init
 # tmux tpm
 if ! [ -d "${HOME}/.tmux/plugins/tpm" ]; then
     echo "Creating tmux tpm symlink"
+    mkdir -p "${HOME}/.tmux/plugins"
     ln -s "${SCRIPT_DIR}/submodules/tpm" "${HOME}/.tmux/plugins/tpm"
 fi
 
