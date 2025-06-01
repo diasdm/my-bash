@@ -13,6 +13,3 @@ alias file-num='ls | wc -l'
 alias venv-create='rm -rf .venv && python3 -m venv .venv && . .venv/bin/activate'
 alias venv-act='. .venv/bin/activate'
 alias venv-setup='pip install -r '
-
-# motivate
-motivate

@@ -44,11 +44,6 @@ if ! [ -f "${HOME}/.tmux.conf" ]; then
     ln -s "${SCRIPT_DIR}/.tmux.conf" "${HOME}/.tmux.conf"
 fi
 
-# motivate
-pushd "${SCRIPT_DIR}/submodules/motivate/motivate" > /dev/null
-sudo ./install.sh
-popd > /dev/null
-
 # install alias
 if ! grep "${SCRIPT_DIR}/bashrc_extensions.sh" ~/.bashrc > /dev/null; then
     echo "
