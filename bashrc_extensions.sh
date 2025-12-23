@@ -10,7 +10,8 @@ fi
 #alias
 alias gti='git'
 alias file-num='ls | wc -l'
-alias venv-create='rm -rf .venv && python3 -m venv .venv && . .venv/bin/activate'
+alias venv-create-3.8='rm -rf .venv && python3.8 -m venv .venv && . .venv/bin/activate'
+alias venv-create-3.10='rm -rf .venv && python3.10 -m venv .venv && . .venv/bin/activate'
 alias venv-act='. .venv/bin/activate'
 alias venv-setup='pip install -r '
 alias pra='pre-commit run -a'
